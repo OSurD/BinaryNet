@@ -3,6 +3,7 @@ from sklearn.metrics import f1_score
 import matplotlib.pyplot as plt
 import tqdm
 import numpy as np
+import os
 
 class ClassificationTrainer():
     def __init__(self, train, test, loss_f = torch.nn.CrossEntropyLoss):
@@ -25,9 +26,8 @@ class ClassificationTrainer():
             f1 = f1_score(labels_test, y_p.to("cpu"), average='macro')
             return loss, f1
 
-    def _checkpoint(self, model, path, epoch, i):
-        path = f"{path}/model.pth"
-        torch.save(model.state_dict(), path)
+    def _checkpoint(self, model, path, name):
+        torch.save(model.state_dict(), os.path.join(path, f"{name}.pth"))
 
     def fit(self, 
             num_epochs, model, 
@@ -35,7 +35,8 @@ class ClassificationTrainer():
             bs_test = 256, 
             optim = torch.optim.Adam, 
             lr = 0.001, 
-            save_path = None):
+            save_path = None,
+            save_interim_models = False):
         """
         num_epochs - число эпох
         model - модель для обучения
@@ -80,9 +81,11 @@ class ClassificationTrainer():
                     self.f1_test_list.append(test_loss[1])
 
             print(f'epoch - {epoch}: loss = {self.loss_test_list[-1]}, f1 = {self.f1_test_list[-1]}')
+            if save_path and save_interim_models:
+                self._checkpoint(Net, save_path, f"epoch_{epoch}")
 
         if save_path:
-            self._checkpoint(Net, save_path, epoch, i)
+            self._checkpoint(Net, save_path, f"epoch_{epoch}")
         self.current_net = Net
         return Net
 

@@ -3,7 +3,7 @@ import torch
 
 import os
 
-from SoundUtils import pad_or_trim_center
+from BinaryNet.utils.SoundUtils import pad_or_trim_center
 
 class FilteredSubsetSC(torchaudio.datasets.SPEECHCOMMANDS):
     def __init__(self, root, subset=None, target=None):
