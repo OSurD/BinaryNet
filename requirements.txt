@@ -1,0 +1,7 @@
+torch
+torchaudio
+numpy
+scipy
+matplotlib
+tqdm
+setuptools<=76.0.0
