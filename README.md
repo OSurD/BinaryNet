@@ -47,4 +47,5 @@ C++ extension с матричным умножением бинарных мат
 <img src="/experiments/images/compare_with_int32.png">
 
 Сравнение C++ extension с матричным умножением бинарных матриц на основе операций XNOR и popcount с матричным умножением float32 из pytorch
+
 <img src="/experiments/images/compare_with_float32.png">
