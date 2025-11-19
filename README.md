@@ -30,18 +30,14 @@ C++ extension с матричным умножением бинарных мат
 
 Результаты
 
-<img
-  src="/experiments/models/SimpleCNN/learning.jpg"
-  alt="Результаты обучения на фильтрованном датасете без бинаризации">
+Результаты обучения на фильтрованном датасете без бинаризации
+<img src="/experiments/models/SimpleCNN/learning.jpg">
 
-<img
-  src="/experiments/models/NaiveXNORSimpleCNN/learning.jpg"
-  alt="Результаты обучения на фильтрованном датасете с бинаризацией с помощью наивной реализацией XNOR-Net">
+Результаты обучения на фильтрованном датасете с бинаризацией с помощью наивной реализацией XNOR-Net
+<img src="/experiments/models/NaiveXNORSimpleCNN/learning.jpg">
 
-<img
-  src="/experiments/models/XNORSimpleCNN/learning.jpg"
-  alt="Результаты обучения на фильтрованном датасете с бинаризацией с помощью реализацией XNOR-Net из официального репозитория">
+Результаты обучения на фильтрованном датасете с бинаризацией с помощью реализацией XNOR-Net из официального репозитория
+<img src="/experiments/models/XNORSimpleCNN/learning.jpg">
 
-<img
-  src="/experiments/models/SimpleCNNQuintized/learning.jpg"
-  alt="Результаты обучения на фильтрованном датасете с бинаризацией с помощью LSQ">
+Результаты обучения на фильтрованном датасете с бинаризацией с помощью LSQ
+<img src="/experiments/models/SimpleCNNQuintized/learning.jpg">
