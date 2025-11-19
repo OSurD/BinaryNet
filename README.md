@@ -13,14 +13,27 @@
 
 Описание структуры репозитория
 
-BinaryNet
+/BinaryNet
 * **BinaryNet/binary_layers** - кастомные бинарные слои (линейный и свертка)
 * **BinaryNet/models** - модели с бинарными весами
 * **BinaryNet/utils** - датасет для конвертации ауди файлов в mel spectrograms, ClassificationTrainer
 
-experiments
+/experiments
 * **dataset_and_fft_features.ipynb** - mel spectrograms
 * **test_models_on_filtered_dataset.ipynb** - тестирование простой сверточной сетки без бинаризации
 * **test_binary_models_on_filtered_dataset.ipynb** - эксперименты с обучением моделей с бинарными весами (с использованием различных подходов) на датасете из 10 голосовых команд
 * **test_matmult_time.ipynb** - сравнение времени работы наивной реализации матричного умножения и pytorch.matmult
 * **test_popcount.ipynb** - тестирование упаковки бинарных матриц в формат uint64_t и матричного умножения на основе операций XNOR и popcount
+
+/cpp_src
+C++ extension с матричным умножением бинарных матриц на основе операций XNOR и popcount
+
+Результаты
+
+![Результаты обучения на фильтрованном датасете без бинаризации](experiments/models/SimpleCNN/learning.png)
+
+![Результаты обучения на фильтрованном датасете с бинаризацией с помощью наивной реализацией XNOR-Net](experiments/models/NaiveXNORSimpleCNN/learning.jpg)
+
+![Результаты обучения на фильтрованном датасете с бинаризацией с помощью реализацией XNOR-Net из официального репозитория](experiments/models/XNORSimpleCNN/learning.jpg)
+
+![Результаты обучения на фильтрованном датасете с бинаризацией с помощью LSQ](experiments/models/SimpleCNNQuintized/learning.jpg)
