@@ -26,6 +26,7 @@
 * **test_popcount.ipynb** - тестирование упаковки бинарных матриц в формат uint64_t и матричного умножения на основе операций XNOR и popcount
 
 /cpp_src
+
 C++ extension с матричным умножением бинарных матриц на основе операций XNOR и popcount
 
 Результаты
@@ -41,3 +42,9 @@ C++ extension с матричным умножением бинарных мат
 
 Результаты обучения на фильтрованном датасете с бинаризацией с помощью LSQ
 <img src="/experiments/models/SimpleCNNQuintized/learning.jpg">
+
+Сравнение C++ extension с матричным умножением бинарных матриц на основе операций XNOR и popcount с матричным умножением int32 из pytorch и наивной реализацией матричного умножения
+<img src="/experiments/images/compare_with_int32.png">
+
+Сравнение C++ extension с матричным умножением бинарных матриц на основе операций XNOR и popcount с матричным умножением float32 из pytorch
+<img src="/experiments/images/compare_with_float32.png">
