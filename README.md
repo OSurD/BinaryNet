@@ -22,6 +22,5 @@ experiments
 * **dataset_and_fft_features.ipynb** - mel spectrograms
 * **test_models_on_filtered_dataset.ipynb** - тестирование простой сверточной сетки без бинаризации
 * **test_binary_models_on_filtered_dataset.ipynb** - эксперименты с обучением моделей с бинарными весами (с использованием различных подходов) на датасете из 10 голосовых команд
-* **test_on_full_dataset.ipynb** - обучение бинарной модели на полном датасете
 * **test_matmult_time.ipynb** - сравнение времени работы наивной реализации матричного умножения и pytorch.matmult
 * **test_popcount.ipynb** - тестирование упаковки бинарных матриц в формат uint64_t и матричного умножения на основе операций XNOR и popcount

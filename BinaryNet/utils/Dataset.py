@@ -2,6 +2,7 @@ import torchaudio
 import torch
 
 import os
+import numpy as np
 
 from BinaryNet.utils.SoundUtils import pad_or_trim_center
 
@@ -25,12 +26,12 @@ class FilteredSubsetSC(torchaudio.datasets.SPEECHCOMMANDS):
         elif subset == "training":
             self._walker = [os.path.join(self._path, p) for p in all_paths - (test | val)]
 
-        self.target = target
+        self.target = np.array(target)
         if target is not None:
             check_target = lambda x: any(PATH_SPLITTER + t + PATH_SPLITTER in x for t in target)
             self._walker = list(filter(check_target, self._walker))
         else:
-            self.target = list(set(p.replace(self._path, "").lstrip(PATH_SPLITTER).split(PATH_SPLITTER)[0] for p in self._walker))
+            self.target = np.array(list(set(p.replace(self._path, "").lstrip(PATH_SPLITTER).split(PATH_SPLITTER)[0] for p in self._walker)))
 
 TARGET_WORDS = ['yes','no','up','down','left','right','on','off','stop','go']
 
@@ -46,4 +47,4 @@ class SCWithFeatures(torch.utils.data.Dataset):
         w, sr, label, *_ = self.base[i]
         w = pad_or_trim_center(w)
         x = self.transform(w)
-        return x, self.base.target.index(label)
+        return x, torch.tensor(self.base.target == label, dtype = torch.float32)

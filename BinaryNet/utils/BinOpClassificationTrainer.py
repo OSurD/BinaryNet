@@ -18,8 +18,8 @@ class BinOpClassificationTrainer(ClassificationTrainer):
             series_test, labels_test = test
             pred = Net(series_test.to(device))
             loss = loss_func(pred, labels_test.to(device))
-            y_p = self._soft_argmax(pred)
-            f1 = f1_score(labels_test, y_p.to("cpu"), average='macro')
+            y_p, y_t = self._soft_argmax(pred, labels_test)
+            f1 = f1_score(y_t, y_p.to("cpu"), average='macro')
             bin_op.restore() #< use bin_op
             return loss, f1
 
@@ -72,8 +72,8 @@ class BinOpClassificationTrainer(ClassificationTrainer):
                 optimizer.step()
 
                 with torch.no_grad():
-                    y_p = self._soft_argmax(outputs)
-                    self.f1_list.append(f1_score(labels, y_p.to("cpu"), average='macro'))
+                    y_p, y_t = self._soft_argmax(outputs, labels)
+                    self.f1_list.append(f1_score(y_t, y_p.to("cpu"), average='macro'))
                     
                     test_loss = self._test_step(Net, test_data, bin_op)
                     self.loss_test_list.append(test_loss[0].item())

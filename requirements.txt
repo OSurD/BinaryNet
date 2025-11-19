@@ -5,3 +5,4 @@ scipy
 matplotlib
 tqdm
 setuptools<=75.8.2
+ninja
